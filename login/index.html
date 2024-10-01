@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>跑路云 - 登录|注册</title>
+    <link rel="stylesheet" href="./normalize.min.css">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<div class="container right-panel-active">
+    <!-- 注册 -->
+    <div class="container_form container--signup">
+        <form action="#" class="form" id="form1">
+            <h2 class="form_title">注册</h2>
+            <input type="text" placeholder="用户名" class="input" />
+            <input type="email" placeholder="邮箱" class="input" />
+            <input type="password" placeholder="密码" class="input" />
+            <button class="btn"  id="registerBtn">注册</button>
+        </form>
+    </div>
+
+    <!-- 登录 -->
+    <div class="container_form container--signin">
+        <form action="#" class="form" id="form2">
+            <h2 class="form_title">登录</h2>
+            <input type="email" placeholder="邮箱" class="input" />
+            <input type="password" placeholder="密码" class="input" />
+            <a href="#" class="link">忘记密码？</a>
+            <button class="btn" id="loginBtn">登录</button>
+        </form>
+    </div>
+
+    <!-- 浮层 -->
+    <div class="container_overlay">
+        <div class="overlay">
+            <div class="overlay_panel overlay--left">
+                <button class="btn" id="signIn">登录</button>
+            </div>
+            <div class="overlay_panel overlay--right">
+                <button class="btn" id="signUp">注册</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 背景 -->
+<div class="slidershow">
+    <div class="slidershow--image" style="background-image: url('https://t.mwm.moe/fj')"></div>
+    <div class="slidershow--image" style="background-image: url('https://www.loliapi.com/acg/')"></div>
+    <div class="slidershow--image" style="background-image: url('https://api.suyanw.cn/api/comic/api.php')"></div>
+    <div class="slidershow--image" style="background-image: url('https://api.lqbby.com/api/dm')"></div>
+</div>
+<style>  
+
+    .btn.disabled {  
+
+        background-color: #ccc;  
+
+        cursor: not-allowed;  
+
+    }  
+
+</style>  
+
+</head> 
+<!-- partial -->
+  <script src="./script.js"></script>
+</body>
+</html>
