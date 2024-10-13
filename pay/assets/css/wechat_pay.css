@@ -408,4 +408,55 @@ body,
         padding: 0 19px;
         margin-bottom: 19px
     }
+    .alipay-button {  
+
+        display: inline-block;  
+
+        padding: 10px 20px;  
+
+        font-size: 16px;  
+
+        color: #fff;  
+
+        background-color: #108ee9; /* 支付宝主蓝色 */  
+
+        border: none;  
+
+        border-radius: 4px;  
+
+        text-decoration: none;  
+
+        text-align: center;  
+
+        cursor: pointer;  
+
+        transition: background-color 0.3s ease;  
+
+    }  
+
+
+
+    .alipay-button:hover {  
+
+        background-color: #0976d3; /* 鼠标悬停时的颜色稍深 */  
+
+    }
+    .wechat-button {  
+        display: inline-block;  
+        padding: 10px 20px;  
+        color: #fff;  
+        background-color: #1aad19; /* 微信绿色 */  
+        border-radius: 5px;  
+        text-align: center;  
+        text-decoration: none;  
+        font-size: 16px;  
+        font-weight: bold;  
+        border: none;  
+        cursor: pointer;  
+        transition: background-color 0.3s ease;  
+    }  
+
+    .wechat-button:hover {  
+        background-color: #148c12; /* 深一点的绿色 */  
+    }
 }
