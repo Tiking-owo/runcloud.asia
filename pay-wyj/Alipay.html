@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Language" content="zh-cn">
+<meta name="renderer" content="webkit">
+<title>支付宝扫码支付 - Alipay</title>
+<link href="./assets/css/wechat_pay.css" rel="stylesheet" media="screen">
+</head>
+<body>
+<div class="body">
+<h1 class="mod-title">
+<span class="ico-alipay"></span><span class="text">支付宝扫码支付</span>
+</h1>
+<div class="mod-ct">
+<div class="order">
+</div>
+<div class="amount">￥1145.14</div>
+<div class="qr-image" id="qrcode">
+</div>
+ 
+<div class="detail" id="orderDetail">
+<dl class="detail-ct" style="display: none;">
+<dt>商家</dt>
+<dd id="storeName"></dd>
+<dt>购买物品</dt>
+<dd id="productName">JTKFCFKXQ4VME50</dd>
+<dt>商户订单号</dt>
+<dd id="billId">2077001145141919810</dd>
+<dt>创建时间</dt>
+<dd id="createTime">2077-11-04 5:14:19</dd>
+</dl>
+<a href="javascript:void(0)" class="arrow"><i class="ico-arrow-alipay"></i></a>
+</div>
+<div class="tip">
+<span class="dec dec-left"></span>
+<span class="dec dec-right"></span>
+<div class="ico-scan-alipay"></div>
+<div class="tip-text">
+<p>请使用支付宝扫一扫</p>
+<p>扫描二维码完成支付</p>
+<a href="https://qr.alipay.com/fkx11634suamp7ikxprff3e" class="alipay-button" role="button">打开支付宝</a>
+</div>
+</div>
+<div class="tip-text">
+</div>
+</div>
+<div class="foot">
+<div class="inner">
+<p>手机用户可保存上方二维码到手机中</p>
+<p>在支付宝扫一扫中选择“相册”即可</p>
+</div>
+</div>
+</div>
+<script src="./assets/js/jquery.min.js"></script>
+<script src="./assets/js/layer.min.js"></script>
+<script src="./assets/js/jquery.qrcode.min.js"></script>
+<script>
+    $('#qrcode').qrcode({
+        text: "https://qr.alipay.com/fkx11634suamp7ikxprff3e",
+        width: 230,
+        height: 230,
+        foreground: "#000000",
+        background: "#ffffff",
+        typeNumber: -1
+        });
+        // 订单详情
+        $('#orderDetail .arrow').click(function (event) {
+            if ($('#orderDetail').hasClass('detail-open')) {
+                $('#orderDetail .detail-ct').slideUp(500, function () {
+                    $('#orderDetail').removeClass('detail-open');
+                });
+            } else {
+                $('#orderDetail .detail-ct').slideDown(500, function () {
+                    $('#orderDetail').addClass('detail-open');
+                });
+            }
+        });
+
+
+        function checkresult() {
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: "/community/alipay/query",
+                timeout: 10000, //ajax请求超时时间10s
+                data: {"out_trade_no": order_num},
+                success: function (data) {
+                    //从服务器得到数据，显示数据并继续查询
+                    if (data.code == 0) {
+                        layer.msg('支付成功，正在跳转中...', {icon: 16, shade: 0.1, time: 5000});
+                    } else {
+                        setTimeout("checkresult()", 2000);
+                    }
+                },
+                //Ajax请求超时，继续查询
+                error: function (XMLHttpRequest, textStatus) {
+                    if (textStatus == "timeout") {
+                        setTimeout("checkresult()", 1000);
+                    } else { //异常
+                        setTimeout("checkresult()", 1000);
+                    }
+                }
+            });
+        }
+
+        var isMobile = function () {
+            var ua = navigator.userAgent;
+            var ipad = ua.match(/(iPad).*OS\s([\d_]+)/),
+                isIphone = !ipad && ua.match(/(iPhone\sOS)\s([\d_]+)/),
+                isAndroid = ua.match(/(Android)\s+([\d.]+)/);
+            return isIphone || isAndroid;
+        }
+
+        function openAlipay() {
+            window.location.href = url_scheme;
+            layer.msg('正在打开支付宝...', {shade: 0, time: 1000});
+        }
+
+        window.onload = function () {
+            if (isMobile()) {
+                $('.open_app').show();
+                window.location.href = url_scheme;
+            }
+            setTimeout("checkresult()", 2000);
+        }
+</script>
+</body>
+</html>
