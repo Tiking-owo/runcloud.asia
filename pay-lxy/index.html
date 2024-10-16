@@ -1,0 +1,49 @@
+<!DOCTYPE html>  
+<html lang="zh-CN">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>请选择支付方式</title>  
+    <style>  
+        body {  
+            font-family: Arial, sans-serif;  
+            display: flex;  
+            flex-direction: column;  
+            align-items: center;  
+            justify-content: center;  
+            height: 100vh;  
+            margin: 0;  
+            background-color: #f0f0f0;  
+        }  
+        .line-button-wrapper {  
+            text-align: center; /* 使按钮水平居中 */  
+        }  
+        .button-link {  
+            display: inline-block;  
+            text-decoration: none; /* 去除下划线 */  
+            margin: 10px 0; /* 垂直间距 */  
+        }  
+        .button-link img {  
+            /* 使图片看起来更像按钮 */  
+            border: 2px solid #ccc; /* 边框 */  
+            border-radius: 5px; /* 圆角 */  
+            transition: border-color 0.3s, box-shadow 0.3s; /* 过渡效果 */  
+        }  
+        .button-link:hover img {  
+            border-color: #007bff; /* 鼠标悬停时改变边框颜色 */  
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 阴影效果 */  
+        }  
+    </style>  
+</head>  
+<body>  
+    <div class="line-button-wrapper">  
+        <h2>请选择支付方式</h2>  
+        <a href="./Alipay.html" class="button-link" aria-label="使用支付宝支付">  
+            <img src="./assets/images/ali.png" width="180" alt="支付宝">  
+        </a>  
+        <a href="./WeChat.html" class="button-link" aria-label="使用微信支付">  
+            <img src="./assets/images/wx.png" width="180" alt="微信">  
+        </a>  
+    </div>  
+</body>  
+</html>
